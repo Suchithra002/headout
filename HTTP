@@ -1,0 +1,18 @@
+package main
+
+import (
+	"fmt"
+	"io/ioutil"
+	"net/http"
+	"os"
+	"strconv"
+)
+
+func dataHandler(w http.ResponseWriter, r *http.Request) {
+	n := r.URL.Query().Get("n")
+	m := r.URL.Query().Get("m")
+
+	if m != "" {
+		data, err := getLineFromFile(n, m)
+		if err != nil {
+	
